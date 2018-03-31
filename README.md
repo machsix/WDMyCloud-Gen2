@@ -14,7 +14,7 @@ I added **buildscript** folder, which contains:
 I also packed some program and they are placed in **Release** folder:
 - WDMyCloud_Aria2_1.33.1.bin: Aria2 with max-conn-per-server=10
 - WDMyCloud_Aria2_1.33.1(100threads).bin: Aria2 with max-conn-per-server=100
-- WDMyCloud_Entware_1.0.0: Entware software repository, contains more 2000+ package. You need to have internet when installing this program since some files need to be downloaded from Entware official website. Learn more at [Entware](https://github/Entware/Entware/wiki)
+- WDMyCloud_Entware_1.0.0.bin: Entware software repository, contains more 2000+ package. You need to have internet when installing this program since some files need to be downloaded from Entware official website. Depending on your internet speed, the installation may take a while. Learn more about Entware at [Entware Github](https://github/Entware/Entware/wiki)
 - Other packages: packed from Auska's original work. **NOT TESTED, USE AT YOUR OWN RISK**
 
 I hope this repository can help anyone having interest to learn and cross compile program for WDMyCloud Gen2
