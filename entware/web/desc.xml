@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<config>
-  <en-US>Install entware for WDMyCloud Gen2. It will modify /opt folder. You need to have wget before using this. Check https://github.com/Entware to learn more.</en-US>
-</config>
