@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
-  <en-US>Aria2 for WD MyCloud Gen2</en-US>
-  <zh-CN>Aria2 for WD MyCloud Gen2</zh-CN>
+  <en-US>Config: /mnt/HD/HD_a2/Nas_Prog/Aria2/config/aria2.conf. Default: max-connection-per-server=100; split=20; dir=/mnt/HD/HD_a2/Aria2. WebUI: Aria-NG(default),YAAW, Webui-aria2. Modify /mnt/HD/HD_a2/Nas_Prog/Aria2/web/index.html to change the default WebUI</en-US>
 </config>
