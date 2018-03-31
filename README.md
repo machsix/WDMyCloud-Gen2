@@ -14,7 +14,7 @@ I added **buildscript** folder, which contains:
 I also packed some program and they are placed in **Release** folder:
 - WDMyCloud_Aria2_1.33.1.bin: Aria2 with max-conn-per-server=10
 - WDMyCloud_Aria2_1.33.1(100threads).bin: Aria2 with max-conn-per-server=100
-- Other packages: packed from Auska's original work. **NOT TESED, USE AT YOUR OWN RISK**
+- Other packages: packed from Auska's original work. **NOT TESTED, USE AT YOUR OWN RISK**
 
 I hope this repository can help anyone having interest to learn and cross compile program for WDMyCloud Gen2
 
