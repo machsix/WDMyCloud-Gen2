@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <apkg>
+    <item>
+      <procudt_id>0</procudt_id>
+      <custom_id>20</custom_id>
+      <model_id>2</model_id>
+      <user_control>0</user_control>
+      <center_type>0</center_type>
+      <individual_flag>0</individual_flag>
+      <name>Aria2</name>
+      <show>Aria2</show>
+      <enable>1</enable>
+      <version>1.33.1</version>
+      <date>20180331</date>
+      <inst_date/>
+      <path/>
+      <ps_name/>
+      <url>index.html</url>
+      <url_port/>
+      <apkg_version>2</apkg_version>
+      <packager>Mach6</packager>
+      <email/>
+      <homepage>https://github.com/machsix/WDMyCloud-Gen2</homepage>
+      <inst_depend/>
+      <inst_conflict/>
+      <start_depend/>
+      <start_conflict/>
+      <description>Config: /mnt/HD/HD_a2/Nas_Prog/Aria2/config/aria2.conf. Default: max-connection-per-server=100; split=20; dir=/mnt/HD/HD_a2/Aria2. WebUI: Aria-NG(default),YAAW, Webui-aria2. Modify /mnt/HD/HD_a2/Nas_Prog/Aria2/web/index.html to change the default WebUI</description>
+      <icon>aria2.png</icon>
+      <MinFWVer/>
+      <MaxFWVer/>
+    </item>
+  </apkg>
+</config>
