@@ -207,8 +207,8 @@ echo " ==============================================="
 echo "Check if everything is correct"
 read -n1 -r -p "Press space to continue..." key
 if [ "$key" = '' ]; then
-  # compile_xx 1 : compile this stuff
-  # compile_xx 0 : do not compile this stuff
+  # compile_xx 1 : download this stuff
+  # compile_xx 0 : do not redownload this stuff
   compile_zlib 1
   compile_expat 1
   compile_ssl 1
