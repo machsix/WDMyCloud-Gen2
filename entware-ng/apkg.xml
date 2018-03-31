@@ -12,24 +12,24 @@
       <show>entware-ng</show>
       <enable>1</enable>
       <version>1.1.0</version>
-      <date>20170823</date>
-      <inst_date>08/25/2017 17:27:16</inst_date>
-      <path>/mnt/HD/HD_a2/Nas_Prog/entware-ng</path>
-      <ps_name></ps_name>
-      <url></url>
-      <url_port></url_port>
+      <date>20180331</date>
+      <inst_date/>
+      <path/>
+      <ps_name/>
+      <url/>
+      <url_port/>
       <apkg_version>2</apkg_version>
       <packager>Auska</packager>
-      <email></email>
-      <homepage></homepage>
-      <inst_depend></inst_depend>
-      <inst_conflict></inst_conflict>
-      <start_depend></start_depend>
-      <start_conflict></start_conflict>
+      <email/>
+      <homepage/>
+      <inst_depend/>
+      <inst_conflict/>
+      <start_depend/>
+      <start_conflict/>
       <description>entware-ng for WDMyCloud</description>
       <icon>entware-ng.png</icon>
-      <MinFWVer></MinFWVer>
-      <MaxFWVer></MaxFWVer>
+      <MinFWVer/>
+      <MaxFWVer/>
     </item>
   </apkg>
 </config>

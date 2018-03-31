@@ -1,0 +1,17 @@
+Package:          Aria2
+Packager:         Mach6
+Email:            
+Homepage:         https://github.com/machsix/WDMyCloud-Gen2
+Description:      Config: /mnt/HD/HD_a2/Nas_Prog/Aria2/config/aria2.conf. Default: max-connection-per-server=100; split=20; dir=/mnt/HD/HD_a2/Aria2. WebUI: Aria-NG(default),YAAW, Webui-aria2. Modify /mnt/HD/HD_a2/Nas_Prog/Aria2/web/index.html to change the default WebUI
+Icon:             aria2.png
+AddonShowName:    Aria2
+AddonIndexPage:   index.html
+AddonUsedPort:    
+InstDepend:
+InstConflict:
+StartDepend:
+StartConflict:
+Version:          1.33.1
+MinFWVer:
+MaxFWVer:
+IndividualFlag:

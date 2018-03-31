@@ -11,8 +11,8 @@
       <name>Shadowsocks</name>
       <show>Shadowsocks</show>
       <enable>1</enable>
-      <version>1.0.0</version>
-      <date>20161105</date>
+      <version>3.0.8</version>
+      <date>20180331</date>
       <inst_date/>
       <path/>
       <ps_name/>
@@ -20,7 +20,7 @@
       <url_port/>
       <apkg_version>2</apkg_version>
       <packager>Auska</packager>
-      <email></email>
+      <email/>
       <homepage/>
       <inst_depend/>
       <inst_conflict/>
