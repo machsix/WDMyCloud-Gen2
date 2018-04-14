@@ -48,6 +48,8 @@ Enable app installation
 
 Alternatively:
 ```
+cd /mnt/HD/HD_a2/Public
+curl -O define.js https://github.com/machsix/WDMyCloud-Gen2/raw/master/define.js
 rm /usr/local/model/web/pages/function/define.js
 ln -sf /mnt/HD/HD_a2/Public/define.js /usr/local/model/web/pages/function/define.js
 ```
