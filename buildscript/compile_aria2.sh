@@ -120,18 +120,20 @@ compile_libssh2 () {
 compile_aria2c () {
   cd $SRC_DIR
   if [ "$1" == "1" ];then
-    wget -N https://github.com/aria2/aria2/releases/download/release-1.33.1/aria2-1.33.1.tar.xz
+    wget -N https://github.com/aria2/aria2/releases/download/release-1.34.0/aria2-1.34.0.tar.xz
     tar xf aria2*.tar.*
   fi
   cd aria2*
   cd src
   # patch https://yadominjinta.github.io/break-aria2-limit/
-  sed -i 's|"1",\s*1,\s*16|"128", 1, -1|' OptionHandlerFactory.cc
-  sed -i 's|TEXT_MIN_SPLIT_SIZE,\s*"20M",\s*1_m|TEXT_MIN_SPLIT_SIZE, "4K", 1_k|' OptionHandlerFactory.cc
-  sed -i 's|TEXT_CONNECT_TIMEOUT,\s*"60"|TEXT_CONNECT_TIMEOUT, "30"|' OptionHandlerFactory.cc
-  sed -i 's|TEXT_PIECE_LENGTH, "1M", 1_m|TEXT_PIECE_LENGTH, "4k", 1_k|' OptionHandlerFactory.cc
-  sed -i 's|TEXT_RETRY_WAIT,\s*"0"|TEXT_RETRY_WAIT, "2"|' OptionHandlerFactory.cc
-  sed -i 's|TEXT_SPLIT,\s*"5"|TEXT_SPLIT, "8"|' OptionHandlerFactory.cc
+  #sed -i 's|"1",\s*1,\s*16|"10240", 1, -1|' OptionHandlerFactory.cc
+  #sed -i 's|TEXT_MIN_SPLIT_SIZE,\s*"20M",\s*1_m|TEXT_MIN_SPLIT_SIZE, "4K", 1_k|' OptionHandlerFactory.cc
+  #sed -i 's|TEXT_CONNECT_TIMEOUT,\s*"60"|TEXT_CONNECT_TIMEOUT, "30"|' OptionHandlerFactory.cc
+  #sed -i 's|TEXT_PIECE_LENGTH, "1M", 1_m|TEXT_PIECE_LENGTH, "4k", 1_k|' OptionHandlerFactory.cc
+  #sed -i 's|TEXT_RETRY_WAIT,\s*"0"|TEXT_RETRY_WAIT, "2"|' OptionHandlerFactory.cc
+  #sed -i 's|TEXT_SPLIT,\s*"5"|TEXT_SPLIT, "8"|' OptionHandlerFactory.cc
+  patch -b -i $PATCH_DIR/aria2-0002-options-unlock-connection-per-server-limit.patch
+  patch -b -i $PATCH_DIR/aria2-0003-download-retry-on-slow-speed-and-reset.patch
   cd ..
   reset_flags
   ARIA2_STATIC=yes  ./configure --host=$TARGET_HOST \
@@ -173,6 +175,7 @@ compile_aria2c () {
 BUILD_DIR=$HOME/Downloads/DSM
 LOCAL_DIR=$BUILD_DIR/local
 SRC_DIR=$BUILD_DIR/src
+PATCH_DIR=$(pwd)/aria2-build-msys2
 
 mkdir -p $BUILD_DIR
 mkdir -p $LOCAL_DIR
@@ -209,12 +212,12 @@ read -n1 -r -p "Press space to continue..." key
 if [ "$key" = '' ]; then
   # compile_xx 1 : download this stuff
   # compile_xx 0 : do not redownload this stuff
-  compile_zlib 1
-  compile_expat 1
-  compile_ssl 1
-  compile_cares 1
-  compile_sqlite 1
-  compile_libssh2 1
+  #compile_zlib 1
+  #compile_expat 1
+  #compile_ssl 1
+  #compile_cares 1
+  #compile_sqlite 1
+  #compile_libssh2 1
   compile_aria2c 1
 else
   echo "quit"

@@ -1,0 +1,3 @@
+[submodule "buildscript/aria2-build-msys2"]
+	path = buildscript/aria2-build-msys2
+	url = https://github.com/myfreeer/aria2-build-msys2.git
