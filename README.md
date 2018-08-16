@@ -38,7 +38,7 @@ mv WDMyCloud* Release/
 cd Release
 for i in *; do mv $i ${i%\(*\)}; done
 ```
-### "Crack" WdMycloud
+### "Crack" WDMyCloud
 Enable app installation
  1. Go to web interface
  2. In “URL” field (In your browser) type: `javascript:APP_INSTALL_FUNCTION=1; APPS_EULA=1; check_app_eula();`
@@ -47,13 +47,28 @@ Enable app installation
  4. Refresh page and install any other apps.
 
 Alternatively:
-```
+```shell
 cd /mnt/HD/HD_a2/Public
-curl -o define.js https://github.com/machsix/WDMyCloud-Gen2/raw/master/define.js
+curl -o define.js https://cdn.rawgit.com/machsix/WDMyCloud-Gen2/bfaabbe9/define.js
 rm /usr/local/model/web/pages/function/define.js
 ln -sf /mnt/HD/HD_a2/Public/define.js /usr/local/model/web/pages/function/define.js
 ```
 run ` APPS_EULA=1; check_app_eula();` in console
+
+### Build kernel for WDMyCloud Gen2 with IPv6 support
+Check **kernel** folder or the following ones
+1. [https://community.wd.com/t/mainline-kernel-4-11-x-for-wd-my-cloud-gen2/211143](https://community.wd.com/t/mainline-kernel-4-11-x-for-wd-my-cloud-gen2/211143)
+2. [Fox's work](http://anionix.ddns.net/WDMyCloud/WDMyCloud-Gen2/)
+To install the kernel, I suggest download [Fox's recovery](http://anionix.ddns.net/WDMyCloud/WDMyCloud-Gen2/usbrecovery.tar.gz) and boot from usb to install the kernel
+
+### How to run a user boot script at MyCloud Gen2 (2.11.xx) devices?
+Check the following links:
+1. [How to run a user boot script at MyCloud Gen2 (2.11.xx) devices](https://community.wd.com/t/how-to-run-a-user-boot-script-at-mycloud-gen2-2-11-xx-devices/169822)
+2. [[GUIDE] How to Make Persistent System Changes (crontab, etc)](https://community.wd.com/t/guide-how-to-make-persistent-system-changes-crontab-etc/201268)
+
+
+###
+
 ### Devices
 	- WDMyCloudEX4: Marvell Kirkwood 88F6282A1 @ 2.0 GHz (single-core)
 	- WDMyCloudEX2: Marvell ARMADA 370 (MV6710) (Single Core ARMv7 @ 1.2 GHz)
