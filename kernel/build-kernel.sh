@@ -28,8 +28,8 @@ tar xf netatop-0.5.tar.gz
 
 # Download my kernel config and xbuild
 cd ~/Downloads/WD_MyCloud_GPL_v2.30.193_20180502/kernel/linux-3.10.39-2014_T2.0p4
-curl XX > .config
-curl XX > xbuild.sh
+curl https://cdn.rawgit.com/machsix/WDMyCloud-Gen2/bf9785c1/kernel/kernel.config > .config
+curl https://cdn.rawgit.com/machsix/WDMyCloud-Gen2/bf9785c1/kernel/xbuild.sh > xbuild.sh
 ./xbuild.sh clean
 
 # Configure Kernel
