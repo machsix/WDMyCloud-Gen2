@@ -1,0 +1,17 @@
+Package:          rclone
+Packager:         Mach6
+Email:            
+Homepage:         https://github.com/machsix/WDMyCloud-Gen2
+Description:      Config: /mnt/HD/HD_a2/Nas_Prog/rclone/config/rclone.conf
+Icon:             rclone.png
+AddonShowName:    rclone
+AddonIndexPage:   index.html
+AddonUsedPort:    
+InstDepend:
+InstConflict:
+StartDepend:
+StartConflict:
+Version:          1.45
+MinFWVer:
+MaxFWVer:
+IndividualFlag:
