@@ -1,0 +1,19 @@
+language: cpp
+sudo: required
+dist: trusty
+compiler:
+  - gcc
+before_install:
+  - sudo dpkg --add-architecture i386
+  - sudo apt-get update
+  - sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 || true
+  - sudo apt-get install multiarch-support
+  - sudo apt-get install libxml2 libxml2:i386 
+script:
+  - ./pack.sh
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: bash deploy.sh ${GH_TOKEN}
+  on:
+    branch: master
