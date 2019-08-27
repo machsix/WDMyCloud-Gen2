@@ -10,7 +10,7 @@ if [[ $COMMITER != "Travis CI" ]]; then
   git fetch
   git config --global user.email "travis@travis-ci.com"
   git config --global user.name "Travis CI"
-  git add Release || true
-  git commit -m "Pack ${TRAVIS_COMMIT} [skip ci]"
+  git add * || true
+  git commit -m "Travis pack ${TRAVIS_COMMIT} [skip ci]"
   git push origin HEAD:master
 fi
