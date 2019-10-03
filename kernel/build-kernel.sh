@@ -1,46 +1,54 @@
-#!/bin/bash -e
+#!/bin/bash
+set +e
+SOURCE_DIR=${1:-"/home/Downloads"}
+OUTPUT_DIR=${SOURCE_DIR}/build
+firmware="WD_MyCloud_GPL_v2.31.195_20190829"
+OLD_CWD=`pwd`
 
-# Switch to root user
-firmware="WD_MyCloud_GPL_v2.30.193_20180502"
-#firmware="WD_MyCloud_GPL_v2.31.149_20181015"
-cwd=`pwd`
-# Download source code
-# https://support.wdc.com/downloads.aspx?p=269&lang=en
-# http://downloads.wdc.com/gpl/WD_MyCloud_GPL_v2.30.193_20180502.tar.gz
-# https://mega.nz/#!oohRjKzZ!IZ6HTUHEiSZHQNOllvnF-U9AW6UQoAsnNy6039bMKMY
-# USB Recovery:https://mega.nz/#!R1hFxIDR!CjPQt0dYswlXcCvdIuqUXhusKgc31j9KQc_lZXDs--c
-mkdir -p ~/Downloads
-cd ~/Downloads
-wget http://downloads.wdc.com/gpl/${firmware}.tar.gz
-tar xf ${firmware}.tar.gz
-
-# Load toolchain
-cd ~/Downloads/${firmware}/toolchain
-tar xf armv7-marvell-linux-gnueabi-softfp_i686_64K_Dev_20131002.tar.gz
-source source.me
-export ROOT_FS=${WORKDIR}/../firmware/module/crfs
-export INSTALL_MOD_PATH=${ROOT_FS}
-export NCORE=20   #number of core you have
-# Untar code
-cd ~/Downloads/${firmware}/kernel
-tar xf linux-3.10.39-2014_T2.0p4.tar.gz
-tar xf netatop-0.5.tar.gz
-# Download my kernel config and xbuild
-cd ~/Downloads/${firmware}/kernel/linux-3.10.39-2014_T2.0p4
-cat ${cwd}/kernel.config > .config
-cat ${cwd}/xbuild.sh > xbuild.sh
-./xbuild.sh clean
-
-# Configure Kernel
-make menuconfig
-read -n1 -r -p "Press space to build ..." key
-if [ "$key" = '' ]; then
-  ./xbuild.sh build
-  ./xbuild.sh install
-else
-  echo "quit"
-  exit
+# clean folder
+if [ -d ${OUTPUT_DIR} ]; then
+  rm -rf ${OUTPUT_DIR}
 fi
+mkdir -p ${OUTPUT_DIR}
 
-echo "kernel is at ${ROOTDIR}/firmware/merge/uImage"
-echo "modules are at ${ROOTDIR}/firmware/module/crfs/lib/modules"
+# version info
+cd ${SOURCE_DIR}/${firmware}
+firmware_ver=${firmware##*_}
+toolchain=`find ./toolchain -maxdepth 1 -type d -name "armv7*"`
+toolchain=`basename $toolchain`
+kernel_ver=`find ./kernel -maxdepth 1 -type d -name "linux*"`
+kernel_ver=`basename $kernel_ver`
+echo -e "\e[1m\e[41m\e[97mFirmware:   ${firmware_ver}\e[0m"
+echo -e "\e[1m\e[41m\e[97mKernel:     ${kernel_ver}\e[0m"
+echo -e "\e[1m\e[41m\e[97mToolchain:  ${toolchain}\e[0m"
+
+# load TOOLCHAIN
+cd ${SOURCE_DIR}/${firmware}/toolchain
+source source.me
+mkdir -p ${ROOTDIR}/merge/${PROJECT_NAME}/
+
+# download my configuration of Kernel
+cd ${SOURCE_DIR}/${firmware}/kernel/${kernel_ver}
+curl -L https://github.com/machsix/WDMyCloud-Gen2/raw/master/kernel/kernel.config --output .config
+curl -L https://github.com/machsix/WDMyCloud-Gen2/raw/master/kernel/xbuild.sh --output xbuild.sh
+
+# configure Kernel
+cd ${SOURCE_DIR}/${firmware}/kernel/${kernel_ver}
+# make menuconfig
+
+# build kernel
+cd ${SOURCE_DIR}/${firmware}/kernel/${kernel_ver}
+./xbuild.sh clean
+./xbuild.sh build
+#cp ./arch/arm/boot/uImage ${ROOTDIR}/merge/${PROJECT_NAME}/
+cp ./arch/arm/boot/uImage ${OUTPUT_DIR}/uImage_${firmware_ver}
+
+# install modules, one of the following
+# make -j`nproc` INSTALL_MOD_PATH=${ROOTDIR}/merge/${PROJECT_NAME} modules_install
+# make -j`nproc` INSTALL_MOD_PATH=${OUTPUT_DIR} modules_install
+# ./xbuild.sh install
+
+echo "kernel is at `realpath ${OUTPUT_DIR}/uImage_${firmware_ver}`"
+echo "modules are at `realpath ${OUTPUT_DIR}/lib`"
+echo -e "\e[1m\e[41m\e[97mKenel built\e[0m"
+cd $OLD_CWD

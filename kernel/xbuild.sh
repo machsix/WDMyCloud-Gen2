@@ -11,29 +11,32 @@ build()
 	PREV_PATH=$PATH
 
 	export CROSS_COMPILE=arm-marvell-linux-gnueabi-
-	#export PATH=/opt_gccarm/armv7-marvell-linux-gnueabi-softfp_i686_64K_Dev_20131002/bin:/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+	# export PATH=/opt_gccarm/armv7-marvell-linux-gnueabi-softfp_i686_64K_Dev_20131002/bin:/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 	export KBUILD_BUILD_USER=kman
 	export KBUILD_BUILD_HOST=kmachine
 	export BASEVERSION=2014T20p4
-	export BUILDNO=git$(git rev-parse --verify --short HEAD)
+	# export BUILDNO=git$(git rev-parse --verify --short HEAD)
 	rm arch/arm/boot/zImage
+	mv .config defconfig
+	make mrproper
+	mv defconfig .config
 #	KCFLAGS="-DALPHA_CUSTOMIZE" make zImage
 	KCFLAGS="-DALPHA_CUSTOMIZE"
-
-	make -j${NCORE} zImage
-
-	make dtbs
-
+	
+	make -j`nproc` zImage
+	
+	make -j`nproc` dtbs
+	
 	cat arch/arm/boot/zImage arch/arm/boot/dts/armada-375-db.dtb > arch/arm/boot/zImage_dtb
-
+	
 	rm arch/arm/boot/zImage
-
+	
 	mv arch/arm/boot/zImage_dtb arch/arm/boot/zImage
-
+	
 	./scripts/mkuboot.sh -A arm -O linux -T kernel -C none -a 0x00008000 -e 0x00008000 -n 'Linux-375' -d arch/arm/boot/zImage arch/arm/boot/uImage
-
+	
 	if [ $? = 0 ] ; then
-		KCFLAGS="-DALPHA_CUSTOMIZE" make -j${NCORE}  modules
+		KCFLAGS="-DALPHA_CUSTOMIZE" make modules
 		if [ $? = 0 ] ; then
 			RET=0
 		fi
@@ -52,10 +55,7 @@ build()
 
 install()
 {
-	cp -avf arch/arm/boot/uImage ${ROOTDIR}/firmware/merge/
-
-	mkdir -p $INSTALL_MOD_PATH
-	make modules_install
+	cp -avf arch/arm/boot/uImage ${ROOTDIR}/merge/${PROJECT_NAME}/
 
 	if [ -n "${ROOT_FS}" ] ; then
 		# for iSCSI Target
@@ -74,18 +74,10 @@ install()
 			./drivers/scsi/libiscsi.ko \
 			${ROOT_FS}/driver/
 
-		cp -avf drivers/net/bonding/bonding.ko   ${ROOT_FS}/driver/
 		cp -avf net/ipv4/tunnel4.ko              ${ROOT_FS}/driver/
-		cp -avf net/ipv6/ipv6.ko                 ${ROOT_FS}/driver/
-		cp -avf net/ipv6/sit.ko                  ${ROOT_FS}/driver/
-		cp -avf net/ipv6/xfrm6_mode_beet.ko      ${ROOT_FS}/driver/
-		cp -avf net/ipv6/xfrm6_mode_transport.ko ${ROOT_FS}/driver/
-		cp -avf net/ipv6/xfrm6_mode_tunnel.ko    ${ROOT_FS}/driver/
 		cp -avf net/ipv4/ipip.ko                 ${ROOT_FS}/driver/
-		cp -avf net/ipv6/tunnel6.ko              ${ROOT_FS}/driver/
-		cp -avf net/ipv6/ip6_tunnel.ko           ${ROOT_FS}/driver/
 		cp -avf drivers/net/tun.ko               ${ROOT_FS}/driver/
-
+		
 		mkdir -p ${MODULE_DIR}/apkg/addons/${PROJECT_NAME}/VPN/lib/modules
 		cp -avf drivers/net/ppp/bsd_comp.ko      ${MODULE_DIR}/apkg/addons/${PROJECT_NAME}/VPN/lib/modules
 		cp -avf drivers/net/ppp/ppp_async.ko     ${MODULE_DIR}/apkg/addons/${PROJECT_NAME}/VPN/lib/modules
@@ -100,6 +92,24 @@ install()
 
 		# netatop
 		cp -avf ../netatop-0.5/module/netatop.ko ${ROOT_FS}/driver/
+
+		# iptable - iptables, netfilter, recent and log module - for ssh brute force protection
+		cp -avf \
+			net/netfilter/x_tables.ko \
+			net/netfilter/nf_conntrack.ko \
+			net/netfilter/xt_conntrack.ko \
+			net/netfilter/xt_tcpudp.ko \
+			net/netfilter/xt_LOG.ko \
+			net/netfilter/xt_limit.ko \
+			net/netfilter/xt_recent.ko \
+			net/netfilter/xt_state.ko \
+			net/netfilter/xt_tcpmss.ko \
+			net/ipv4/netfilter/ip_tables.ko \
+			net/ipv4/netfilter/iptable_filter.ko \
+			net/ipv4/netfilter/nf_defrag_ipv4.ko \
+			net/ipv4/netfilter/nf_conntrack_ipv4.ko \
+			${ROOT_FS}/driver/
+
 	fi
 }
 
