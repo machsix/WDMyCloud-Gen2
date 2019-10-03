@@ -1,0 +1,17 @@
+Package:          ffmpeg
+Packager:         Mach6
+Email:
+Homepage:         https://github.com/machsix/WDMyCloud-Gen2
+Description:      Static build obtained from https://johnvansickle.com/ffmpeg/
+Icon:             icon.png
+AddonShowName:    ffmpeg
+AddonIndexPage:   index.html
+AddonUsedPort:
+InstDepend:
+InstConflict:
+StartDepend:
+StartConflict:
+Version:          4.2
+MinFWVer:
+MaxFWVer:
+IndividualFlag:
