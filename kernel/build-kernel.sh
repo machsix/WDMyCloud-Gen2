@@ -16,12 +16,12 @@ echo -e "\e[1m\e[41m\e[97mKernel:     ${kernel_ver}\e[0m"
 echo -e "\e[1m\e[41m\e[97mToolchain:  ${toolchain}\e[0m"
 
 # clean folder
-echo ${firmware_ver} > ${SOURCE_DIR}/build/version
 OUTPUT_DIR=${SOURCE_DIR}/build/${firmware_ver}
 if [ -d ${OUTPUT_DIR} ]; then
   rm -rf ${OUTPUT_DIR}
 fi
 mkdir -p ${OUTPUT_DIR}
+echo ${firmware_ver} > ${SOURCE_DIR}/build/version
 
 # load TOOLCHAIN
 cd ${SOURCE_DIR}/${firmware}/toolchain

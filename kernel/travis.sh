@@ -15,14 +15,14 @@ if [ $COMMITER != "Travis CI" ]; then
     ./build-kernel.sh ${KERNEL_DIR}/temp
 
     version=`cat ${KERNEL_DIR}/temp/build/version`
-    if [ -d ${KERNEL_DIR}/kernel/${version} ]; then
-      rm -rf ${KERNEL_DIR}/kernel/${version}
+    if [ -d ${KERNEL_DIR}/${version} ]; then
+      rm -rf ${KERNEL_DIR}/${version}
     fi
-    mkdir -p ${KERNEL_DIR}/kernel/${version}
+    mkdir -p ${KERNEL_DIR}/${version}
     mv -f ${KERNEL_DIR}/temp/build/${version}/uImage        ${KERNEL_DIR}/${version}/
     mv -f ${KERNEL_DIR}/temp/build/${version}/lib/modules   ${KERNEL_DIR}/${version}/
     cd ${KERNEL_DIR}/${version}
-    tar xf modules.tar.gz modules
+    tar czvf modules.tar.gz modules
     rm -rf modules
     rm -rf ${KERNEL_DIR}/temp
   fi
