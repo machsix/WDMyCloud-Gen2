@@ -4,7 +4,7 @@ set +e
 
 OLD_CWD=`pwd`
 # check changed files
-export CHNAGED=`git diff-tree --no-commit-id --name-only -r ${TRAVIS_COMMIT}`
+export CHANGED=`git diff-tree --no-commit-id --name-only -r ${TRAVIS_COMMIT}`
 # pack package
 export COMMITER=`git log -1 --pretty=format:'%an'`
 newPack=0
@@ -12,7 +12,7 @@ if [ $COMMITER != "Travis CI" ]; then
   for i in */; do
     if [ "$i" != "Aria2" ]; then
       if [ -f "$i/apkg.rc" ]; then
-        if grep -q $i <<< "$CHNAGED"; then
+        if grep -q $i <<< "$CHANGED"; then
           cd $i
           find . -name '*.sh' -exec chmod +x '{}' \;
           chmod +x sbin/* > /dev/null 2>&1 || true

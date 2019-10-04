@@ -1,17 +1,19 @@
-Package:          docker
-Packager:         Auska
-Email:            
-Homepage:         
-Description:      docker for WDMyCloud
-Icon:             docker.png
-AddonShowName:    docker
-AddonIndexPage:
-AddonUsedPort:    
+Package:	docker
+Version:	19.03.2
+Packager:	TFL
+Email:
+Homepage:	https://github.com/WDCommunity/wdpksrc
+Description:	Docker container management
+Icon:	        docker.png
+AddonShowName:	Docker
+AddonIndexPage:	index.html
+AddonUsedPort:
 InstDepend:
 InstConflict:
 StartDepend:
 StartConflict:
-Version:          17.06.1-ce
+CenterType:
+UserControl:
 MinFWVer:
 MaxFWVer:
-IndividualFlag:
+IndividualFlag: 0

@@ -1,0 +1,46 @@
+********************************************************************************
+* Modification of or tampering with the Software, including but not limited to *
+* any Open Source Software, is solely at Your own risk. Western Digital is not *
+* responsible for any such modification or tampering. Western Digital will not *
+* support any product in which You have or have attempted to modify the        *
+* Software supplied by Western Digital.                                        *
+********************************************************************************
+
+1. Introduction
+	This file will show you how to build the WD MyCloud firmware.
+	1.1 tar zxvf WD_MyCloud_GPL_v2.31.195_20190829.tar.gz
+	1.2 # cd WD_MyCloud_GPL_v2.31.195_20190829
+
+2. Install tool-chain
+	2.1 # cd toolchain
+	2.2 # tar zxvf armv7-marvell-linux-gnueabi-softfp_i686_64K_Dev_20131002.tar.gz
+	2.3 # source source.me
+
+3. How to build Open source modules? For example: build attr-2.4.46
+	3.1 Install compiler toolchain
+	3.2 # cd $HOME_DIR/Open_Source_packages
+	3.3 # tar zxvf attr-2.4.46.tar.gz
+	3.4 # cd attr-2.4.46
+	3.5 # ./xbuild.sh build
+	3.6 # ./xbuild.sh install
+	3.7 the result is under _xinstall/WDMyCloud, and install to firmware root filesystem	
+
+4. Build the root file system
+	4.1 # cd $HOME_DIR/firmware/ramdisk
+	4.2 # ./create_ramdisk.sh
+	4.3 # cp -f uRamdisk ../merge/
+
+5. Non-Open Source: include all non-open source binaries
+	5.1 # cd $HOME_DIR/firmware/module
+	5.2 # ./create_image.sh
+	5.3 # cp -f my-image.cfs ../merge/image.cfs
+
+6. Build the firmware
+	6.1 # cd $HOME_DIR/firmware/merge
+	6.2 make sure image.cfs, merge, uImage, default.tar.gz, uRamdisk
+		are in the merge folder
+	6.3 # ./merge
+	6.4 WD-NAS-firmware will be created
+	6.5 Update firmware with web UI
+
+
