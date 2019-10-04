@@ -12,7 +12,8 @@ if [ $COMMITER != "Travis CI" ]; then
     cd ${KERNEL_DIR}
     chmod +x *.sh
     ./prepare-kernel.sh ${KERNEL_DIR}/temp
-    ./build-kernel.sh ${KERNEL_DIR}/temp
+    ./patch-kernel.sh  ${KERNEL_DIR}/temp
+    ./build-kernel.sh   ${KERNEL_DIR}/temp
 
     version=`cat ${KERNEL_DIR}/temp/build/version`
     if [ -d ${KERNEL_DIR}/${version} ]; then

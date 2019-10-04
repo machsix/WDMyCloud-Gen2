@@ -23,7 +23,9 @@ OLD_CWD=`pwd`
 mkdir -p ${SOURCE_DIR}
 
 cd ${SOURCE_DIR}
-curl -L http://downloads.wdc.com/gpl/${firmware}.tar.gz --output ${firmware}.tar.gz
+[ -d ${firmware} ] && rm -rf ${firmware}
+#[ ! -f ${firmware}.tar.gz ] && curl -L http://downloads.wdc.com/gpl/${firmware}.tar.gz --output ${firmware}.tar.gz
+[ ! -f ${firmware}.tar.gz ] && curl -L https://github.com/machsix/WDMyCloud-Gen2/releases/download/v1.1/${firmware}.tar.gz --output ${firmware}.tar.gz
 tar xf ${firmware}.tar.gz
 
 cd ${SOURCE_DIR}/${firmware}/toolchain

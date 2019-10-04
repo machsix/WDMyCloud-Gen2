@@ -9,7 +9,7 @@ before_install:
   - sudo apt install -y libc6:i386 libncurses5:i386 libstdc++6:i386 || true
   - sudo apt install -y multiarch-support
   - sudo apt install -y libxml2 libxml2:i386
-  - sudo apt install -y curl build-essential ncurses-dev bc
+  - sudo apt install -y curl build-essential ncurses-dev bc flex bison
 script:
   - ./pack.sh
   - cd kernel && ./travis.sh && cd ..

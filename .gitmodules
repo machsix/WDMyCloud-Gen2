@@ -1,3 +1,6 @@
 [submodule "buildscript/aria2-build-msys2"]
 	path = buildscript/aria2-build-msys2
 	url = https://github.com/myfreeer/aria2-build-msys2.git
+[submodule "kernel/overlayfs-patches"]
+	path = kernel/overlayfs-patches
+	url = https://github.com/machsix/overlayfs-patches.git

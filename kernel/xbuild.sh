@@ -12,8 +12,8 @@ build()
 
 	export CROSS_COMPILE=arm-marvell-linux-gnueabi-
 	# export PATH=/opt_gccarm/armv7-marvell-linux-gnueabi-softfp_i686_64K_Dev_20131002/bin:/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-	export KBUILD_BUILD_USER=kman
-	export KBUILD_BUILD_HOST=kmachine
+	export KBUILD_BUILD_USER=machsix
+	export KBUILD_BUILD_HOST=Mars
 	export BASEVERSION=2014T20p4
 	# export BUILDNO=git$(git rev-parse --verify --short HEAD)
 	rm arch/arm/boot/zImage

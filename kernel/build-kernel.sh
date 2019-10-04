@@ -28,10 +28,12 @@ cd ${SOURCE_DIR}/${firmware}/toolchain
 source source.me
 mkdir -p ${ROOTDIR}/merge/${PROJECT_NAME}/
 
-# download my configuration of Kernel
+# use my configuration of Kernel
 cd ${SOURCE_DIR}/${firmware}/kernel/${kernel_ver}
-curl -L https://github.com/machsix/WDMyCloud-Gen2/raw/master/kernel/kernel.config --output .config
-curl -L https://github.com/machsix/WDMyCloud-Gen2/raw/master/kernel/xbuild.sh --output xbuild.sh
+# curl -L https://github.com/machsix/WDMyCloud-Gen2/raw/master/kernel/kernel.config --output .config
+# curl -L https://github.com/machsix/WDMyCloud-Gen2/raw/master/kernel/xbuild.sh --output xbuild.sh
+cat ${OLD_CWD}/kernel.config  > .config
+cat ${OLD_CWD}/xbuild.sh      > xbuild.sh
 
 # configure Kernel
 cd ${SOURCE_DIR}/${firmware}/kernel/${kernel_ver}
