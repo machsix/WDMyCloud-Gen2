@@ -12,7 +12,7 @@ else
 fi
 
 # check changed files
-export CHANGED=`git diff-tree --no-commit-id --name-only -r ${TRAVIS_COMMIT}`
+export CHANGED=`git diff-tree --no-commit-id --name-only -r HEAD`
 # pack package
 export COMMITER=`git log -1 --pretty=format:'%an'`
 newPack=0
@@ -34,6 +34,7 @@ if [ $COMMITER != "Travis CI" ]; then
   done
   if [ $newPack == "1" ]; then
     for i in WDMyCloud*.bin; do
+      echo -e "\e[1m\e[41m\e[97mPackage:   ${i}\e[0m"
       mv $i ${i%\(*\)} > /dev/null 2>&1 || true
     done
     mkdir -p ${REPO_DIR}/Release

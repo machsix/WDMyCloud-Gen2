@@ -1,0 +1,44 @@
+diff --git a/busybox-1.20.2/libbb/printable_string.c b/busybox-1.20.2-cn/libbb/printable_string.c
+index a316f60..0db7842 100644
+--- a/busybox-1.20.2/libbb/printable_string.c
++++ b/busybox-1.20.2-cn/libbb/printable_string.c
+@@ -31,8 +31,6 @@ const char* FAST_FUNC printable_string(uni_stat_t *stats, const char *str)
+ 		}
+ 		if (c < ' ')
+ 			break;
+-		if (c >= 0x7f)
+-			break;
+ 		s++;
+ 	}
+ 
+@@ -45,7 +43,7 @@ const char* FAST_FUNC printable_string(uni_stat_t *stats, const char *str)
+ 			unsigned char c = *d;
+ 			if (c == '\0')
+ 				break;
+-			if (c < ' ' || c >= 0x7f)
++			if (c < ' ' )
+ 				*d = '?';
+ 			d++;
+ 		}
+diff --git a/busybox-1.20.2/libbb/unicode.c b/busybox-1.20.2-cn/libbb/unicode.c
+index 99dc1df..e9c4b22 100644
+--- a/busybox-1.20.2/libbb/unicode.c
++++ b/busybox-1.20.2-cn/libbb/unicode.c
+@@ -999,7 +999,7 @@ static char* FAST_FUNC unicode_conv_to_printable2(uni_stat_t *stats, const char
+ 					while ((int)--width >= 0);
+ 					break;
+ 				}
+-				*d++ = (c >= ' ' && c < 0x7f) ? c : '?';
++				*d++ = (c >= ' ' ) ? c : '?';
+ 				src++;
+ 			}
+ 			*d = '\0';
+@@ -1007,7 +1007,7 @@ static char* FAST_FUNC unicode_conv_to_printable2(uni_stat_t *stats, const char
+ 			d = dst = xstrndup(src, width);
+ 			while (*d) {
+ 				unsigned char c = *d;
+-				if (c < ' ' || c >= 0x7f)
++				if (c < ' ')
+ 					*d = '?';
+ 				d++;
+ 			}

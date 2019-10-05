@@ -1,0 +1,7 @@
+adjtimex ar arp arping ash awk basename bzip2 cal cat chgrp chmod chown chroot clear cmp cp crond crontab cut date dd df dhcprelay diff dirname dmesg dnsdomainname dos2unix
+	dpkg du dumpleases echo egrep env expand expr false fdisk fgrep find free fsck getopt getty grep gunzip gzip halt head hostname id ifconfig ifenslave init ionice iostat ip
+	ipaddr ipcalc iplink iproute iprule iptunnel kill killall less ln logger logname logread losetup ls lsof lspci lsusb lzcat lzma man md5sum mdev mkdir mkfifo mknod mkswap
+	mktemp modprobe more mount mv netstat nice nohup nslookup passwd pgrep pidof ping ping6 pipe_progress pivot_root pkill poweroff printenv printf ps pstree pwd rdate readlink
+	realpath reboot renice reset resize rm rmdir route sed seq sh sha1sum sha256sum sha512sum sleep sort split stat su swapoff swapon sync sysctl syslogd tac tail tar tee tftp
+	tftpd time top touch tr traceroute traceroute6 true tty udhcpc udhcpd umount uname uniq unix2dos unlzma unxz uptime usleep vconfig vi watch wc wget which whoami xargs xz
+	xzcat zcat zcip
