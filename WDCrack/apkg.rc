@@ -1,0 +1,17 @@
+Package:          WDCrack
+Packager:         machsix
+Email:            fox.axon@gmail.com
+Homepage:         http://anionix.ddns.net
+Description:      Link define.js. Modified from fox's package
+Icon:             WDCrack.png
+AddonShowName:    WDCrack
+AddonIndexPage:
+AddonUsedPort:
+InstDepend:
+InstConflict:
+StartDepend:
+StartConflict:
+Version:          1.3
+MinFWVer:
+MaxFWVer:
+IndividualFlag:
