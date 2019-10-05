@@ -1,23 +1,26 @@
 #!/bin/sh
 
-INSTALL_DIR=$1
+[ -f /tmp/debug_apkg ] && echo "APKG_DEBUG: $0 $@" >> /tmp/debug_apkg
 
-# crate web surface
-ln -sf $INSTALL_DIR/web /var/www/entware
+INSTALL_DIR=$1
+APKG_MODULE="entware"
+
+# create web surface
+ln -sf $INSTALL_DIR/web /var/www/${APKG_MODULE}
 
 # following lines copied from entware manual
-
 unset LD_LIBRARY_PATH
 unset LD_PRELOAD
 
+
+# backup opt
 echo "Info: Checking for prerequisites and creating folders..."
 echo "Backup opt"
-
-mkdir -p $INSTALL_DIR/opt
-# backup opt
-cp -av /opt $INSTALL_DIR/opt_bak
+mkdir -p $INSTALL_DIR/opt_bak
+cp -av /opt/* $INSTALL_DIR/opt_bak
 
 # create stock links
+mkdir -p $INSTALL_DIR/opt
 if [ -d /opt/firefly ]; then
    ln -sf $(readlink -f /opt/firefly)  $INSTALL_DIR/opt/firefly
 fi
