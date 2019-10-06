@@ -11,13 +11,13 @@
       <name>busybox</name>
       <show>busybox</show>
       <enable>1</enable>
-      <version>1.0</version>
+      <version>2.0</version>
       <date>20191006</date>
       <inst_date/>
       <path/>
       <ps_name/>
-      <url/>
-      <url_port/>
+      <url>index.php</url>
+      <url_port>80</url_port>
       <apkg_version>2</apkg_version>
       <packager>machsix</packager>
       <email>machsix@github.com</email>
@@ -26,7 +26,7 @@
       <inst_conflict/>
       <start_depend/>
       <start_conflict/>
-      <description>BusyBox combines tiny versions of many common UNIX utilities into a single small executable. It provides replacements for most of the utilities you usually find in GNU fileutils, shellutils, etc. The utilities in BusyBox generally have fewer options than theirbusybox.png</description>
+      <description>BusyBox combines tiny versions of many common UNIX utilities into a single small executable.</description>
       <icon>busybox.png</icon>
       <MinFWVer/>
       <MaxFWVer/>
