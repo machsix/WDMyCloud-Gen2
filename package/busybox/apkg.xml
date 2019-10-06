@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+  <apkg>
+    <item>
+      <procudt_id>0</procudt_id>
+      <custom_id>20</custom_id>
+      <model_id>2</model_id>
+      <user_control>0</user_control>
+      <center_type>0</center_type>
+      <individual_flag>0</individual_flag>
+      <name>busybox</name>
+      <show>busybox</show>
+      <enable>1</enable>
+      <version>1.0</version>
+      <date>20191006</date>
+      <inst_date/>
+      <path/>
+      <ps_name/>
+      <url/>
+      <url_port/>
+      <apkg_version>2</apkg_version>
+      <packager>machsix</packager>
+      <email>machsix@github.com</email>
+      <homepage>https://github.com/machsix/WDMyCloud-Gen2</homepage>
+      <inst_depend/>
+      <inst_conflict/>
+      <start_depend/>
+      <start_conflict/>
+      <description>BusyBox combines tiny versions of many common UNIX utilities into a single small executable. It provides replacements for most of the utilities you usually find in GNU fileutils, shellutils, etc. The utilities in BusyBox generally have fewer options than theirbusybox.png</description>
+      <icon>busybox.png</icon>
+      <MinFWVer/>
+      <MaxFWVer/>
+    </item>
+  </apkg>
+</config>
