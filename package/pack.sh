@@ -33,12 +33,12 @@ if [ $COMMITER != "Travis CI" ]; then
     fi
   done
   if [ $newPack == "1" ]; then
-    for i in WDMyCloud*.bin; do
+    for i in WDMyCloud*.bin(*); do
       echo -e "\e[1m\e[41m\e[97mPackage:   ${i}\e[0m"
       mv $i ${i%\(*\)} > /dev/null 2>&1 || true
     done
     mkdir -p ${REPO_DIR}/Release
-    mv WDMyCloud*.bin ${REPO_DIR}/Release/
+    mv WDMyCloud*.bin ${REPO_DIR}/release/
   fi
 fi
 
