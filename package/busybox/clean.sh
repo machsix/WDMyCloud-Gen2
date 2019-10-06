@@ -2,6 +2,8 @@
 
 [ -f /tmp/debug_apkg ] && echo "APKG_DEBUG: $0 $@" >> /tmp/debug_apkg
 
+INSTALL_DIR=$1
+
 PREFIX=/usr/local
 BIN_DIR=${PREFIX}/bin
 

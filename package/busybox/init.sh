@@ -14,7 +14,7 @@ ln -sf ${INSTALL_DIR}/files/busybox /bin/busybox-1.20.2
 
 # busybox provided programs
 ln -sf ${INSTALL_DIR}/files/busybox ${BIN_DIR}/which
-busybox_lst=`cat ${INSTALL_DIR}/busybox.lst`
+busybox_lst=`cat ${INSTALL_DIR}/files/busybox.lst`
 for exe in ${busybox_lst}; do
     if [ -z `which $exe` ]; then
         ln -sf ${INSTALL_DIR}/files/busybox  ${BIN_DIR}/${exe}
