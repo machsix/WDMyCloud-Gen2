@@ -1,4 +1,6 @@
 ## Howto
+0. Prepare ubuntu, install buildtools
+
 1. Download free electron toolchain https://toolchains.bootlin.com/downloads/releases/toolchains/armv7-eabihf/tarballs/armv7-eabihf--glibc--stable-2018.11-1.tar.bz2
 
 2. Extract all the files
@@ -13,4 +15,4 @@
 
 1. Python-2.7: works
 
-2. samba-4.3.11: doesn't work
+2. samba-4.3.11: work, I can get 30~35MB/s with this build, compared wit 20MB/s for samba shipped with Debian
