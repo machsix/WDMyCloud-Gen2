@@ -1,0 +1,42 @@
+diff --git linux-4.14.148/drivers/ata/sata_mv.c linux-4.14.148-patched/drivers/ata/sata_mv.c
+index 3b2246d..332694a 100644
+--- linux-4.14.148/drivers/ata/sata_mv.c
++++ linux-4.14.148-patched/drivers/ata/sata_mv.c
+@@ -72,6 +72,9 @@
+ #include <scsi/scsi_cmnd.h>
+ #include <scsi/scsi_device.h>
+ #include <linux/libata.h>
++#ifdef CONFIG_LEDS_TRIGGER_IDE_DISK
++#include <linux/leds.h>
++#endif
+ 
+ #define DRV_NAME	"sata_mv"
+ #define DRV_VERSION	"1.28"
+@@ -1175,6 +1178,10 @@ static void mv_start_edma(struct ata_port *ap, void __iomem *port_mmio,
+ {
+ 	int want_ncq = (protocol == ATA_PROT_NCQ);
+ 
++#ifdef CONFIG_LEDS_TRIGGER_IDE_DISK
++	ledtrig_ide_activity();
++#endif
++
+ 	if (pp->pp_flags & MV_PP_FLAG_EDMA_EN) {
+ 		int using_ncq = ((pp->pp_flags & MV_PP_FLAG_NCQ_EN) != 0);
+ 		if (want_ncq != using_ncq)
+diff --git linux-4.14.148/drivers/mtd/spi-nor/spi-nor.c linux-4.14.148-patched/drivers/mtd/spi-nor/spi-nor.c
+index 34ecc12..0ce22bd 100644
+--- linux-4.14.148/drivers/mtd/spi-nor/spi-nor.c
++++ linux-4.14.148-patched/drivers/mtd/spi-nor/spi-nor.c
+@@ -972,6 +972,12 @@ static const struct flash_info spi_nor_ids[] = {
+ 	{ "mb85rs1mt", INFO(0x047f27, 0, 128 * 1024, 1, SPI_NOR_NO_ERASE) },
+ 
+ 	/* GigaDevice */
++        /* https://www.datasheet4u.com/datasheet-pdf/GigaDevice/GD25Q80/pdf.php?id=730517 */
++	{
++		"gd25q80", INFO(0xc84014, 0,  4 * 1024, 256,
++			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
++			SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
++	},
+ 	{
+ 		"gd25q16", INFO(0xc84015, 0, 64 * 1024,  32,
+ 			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
