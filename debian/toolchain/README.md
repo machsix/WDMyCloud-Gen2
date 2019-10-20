@@ -3,7 +3,9 @@
 
 1. Download free electron toolchain https://toolchains.bootlin.com/downloads/releases/toolchains/armv7-eabihf/tarballs/armv7-eabihf--glibc--stable-2018.11-1.tar.bz2
 
-2. Extract all the files
+2. Extract all the files some where like `/home/armv7-eabihf--glibc--stable-2018.11-1`
+
+3. **Create a symbolic from `/home/armv7-eabihf--glibc--stable-2018.11-1` to `/opt/armv7-eabihf--glibc--stable-2018.11-1`** otherwise bison will not work
 
 3. Put `source.sh` into the folder and source it before compiling
 

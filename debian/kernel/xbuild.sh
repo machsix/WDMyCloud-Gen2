@@ -2,7 +2,7 @@
 # Date: Fri Oct 11 20:31:36 UTC 2019
 
 # Set these two
-KVER="4.14.150"
+KVER="4.19.80"
 DEVICE="armada-375-wdmc-gen2"
 
 prepare () {
@@ -23,7 +23,7 @@ patch_kernel () {
 }
 
 config_kernel () {
-  cp -f kernel-4.15.0-rc6.config linux-${KVER}/.config
+  cp -f kernel-${KVER}.config linux-${KVER}/.config
   source ../../source.sh
   echo $PATH
   cd linux-${KVER}
@@ -32,6 +32,7 @@ config_kernel () {
 }
 
 build_kernel () {
+  source ../../source.sh
   cd linux-${KVER}
   # Compile
   make -j`nproc` zImage
@@ -43,6 +44,7 @@ build_kernel () {
 }
 
 install_kernel () {
+  source ../../source.sh
   cd linux-${KVER}
   # Merge image
   rm -rf ${DEVICE}
@@ -71,8 +73,8 @@ pack_kernel () {
 #patch_kernel
 config_kernel
 build_kernel
-install_kernel
-pack_kernel
+#install_kernel
+#pack_kernel
 exit 0
 
 

@@ -12,7 +12,7 @@
         - ...
       - src
         - armada-375-wdmc-gen2.dts
-        - kernel-my.config
+        - kernel-4.14.150.config
         - xbuild.sh
         - patch/
           - linux-4.14.150.patch
@@ -20,3 +20,10 @@
 3. run `xbuild.sh` to build
 
 > Don't modify anything in `armada-375-wdmc-gen2.dts` The file is from fox
+
+
+## Status:
+ - 4.14.150: test pass
+   - up to 30 MB/s with samba-4.3.11 (cubic and bbr don't make a difference)
+
+ - 4.19.80: fail the test

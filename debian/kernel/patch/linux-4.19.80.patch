@@ -1,0 +1,16 @@
+diff --git linux-4.19.80/drivers/mtd/spi-nor/spi-nor.c linux-4.19.80-patched/drivers/mtd/spi-nor/spi-nor.c
+index 0959fab..f028277 100644
+--- linux-4.19.80/drivers/mtd/spi-nor/spi-nor.c
++++ linux-4.19.80-patched/drivers/mtd/spi-nor/spi-nor.c
+@@ -1015,6 +1015,11 @@ static const struct flash_info spi_nor_ids[] = {
+ 
+ 	/* GigaDevice */
+ 	{
++		"gd25q80", INFO(0xc84014, 0,  4 * 1024,  256,
++			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
++			SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
++	},
++	{
+ 		"gd25q16", INFO(0xc84015, 0, 64 * 1024,  32,
+ 			SECT_4K | SPI_NOR_DUAL_READ | SPI_NOR_QUAD_READ |
+ 			SPI_NOR_HAS_LOCK | SPI_NOR_HAS_TB)
