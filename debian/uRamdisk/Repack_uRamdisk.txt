@@ -1,0 +1,16 @@
+# Unpack uRamdisk
+mkdir initrd
+dd if=uRamdisk of=initrd/initrd.cpio.lzma bs=64 skip=1
+cd initrd
+lzma -d initrd.cpio.lzma
+cpio -i < initrd.cpio
+rm initrd.cpio
+
+
+# Build uRamdisk
+apt-get install u-boot-tools
+cd initrd
+find . 2>/dev/null | cpio -o -H newc | lzma -7 > ../initramfs.cpio.lzma
+cd ..
+mkimage -A arm -O linux -T ramdisk -C lzma -a 0x00e00000 -n Ramdisk -d initramfs.cpio.lzma uRamdisk
+rm initramfs.cpio.lzma
