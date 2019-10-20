@@ -4,3 +4,6 @@
 [submodule "kernel/overlayfs-patches"]
 	path = stock/kernel/overlayfs-patches
 	url = https://github.com/machsix/overlayfs-patches.git
+[submodule "debian/aria2"]
+	path = debian/aria2
+	url = https://github.com/machsix/aria2-static-build
